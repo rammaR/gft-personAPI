@@ -31,7 +31,7 @@ public class Person {
 
     private LocalDate birthdate;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true, targetEntity = Phone.class)
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Phone> phone;
 
 }
