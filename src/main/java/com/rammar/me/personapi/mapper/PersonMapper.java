@@ -6,14 +6,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PersonMapper {
 
-    final PersonMapper personMapper = Mappers.getMapper(PersonMapper.class);
+    PersonMapper personMapper = Mappers.getMapper( PersonMapper.class );
 
-    @Mapping(source = "birthdate", target = "birthdate", dateFormat = "dd-MM-yyyy")
-    Person toModel(PersonDTO personDTO);
+    @Mapping(target = "birthdate", source = "birthdate", dateFormat = "dd-MM-yyyy")
+    Person toModel(PersonDTO dto);
 
-    PersonDTO toDTO(Person person);
+    @Mapping(target = "birthdate", source = "birthdate", dateFormat = "dd-MM-yyyy")
+    PersonDTO toDTO(Person dto);
 
 }

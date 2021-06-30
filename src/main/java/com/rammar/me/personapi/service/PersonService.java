@@ -18,20 +18,21 @@ import java.util.stream.Collectors;
 public class PersonService {
 
     private PersonRepository personRepository;
+    private PersonMapper personMapper;
 
     public MessageDTO savePerson(PersonDTO personDTO) {
-        Person person = PersonMapper.personMapper.toModel(personDTO);
-        Person saved = this.personRepository.save(person);
-        return MessageDTO.builder().message("Saved person id: " + saved.getId()).build();
+        Person person = personMapper.toModel(personDTO);
+        Person saved = personRepository.save(person);
+        return MessageDTO.builder().message("Saved person with ID: " + saved.getId()).build();
     }
 
     public List<PersonDTO> listAll() {
-        return personRepository.findAll().stream().map(PersonMapper.personMapper::toDTO).collect(Collectors.toList());
+        return personRepository.findAll().stream().map(personMapper::toDTO).collect(Collectors.toList());
     }
 
     public PersonDTO findById(Long id) throws PersonNotFoundException {
         Person person = verifyById(id);
-        return PersonMapper.personMapper.toDTO(person);
+        return personMapper.toDTO(person);
     }
 
     public MessageDTO delete(Long id) throws PersonNotFoundException {
@@ -42,7 +43,7 @@ public class PersonService {
 
     public MessageDTO update(Long id, PersonDTO personDTO) throws PersonNotFoundException {
         verifyById(id);
-        Person toUpdate = PersonMapper.personMapper.toModel(personDTO);
+        Person toUpdate = personMapper.toModel(personDTO);
         this.personRepository.save(toUpdate);
         return MessageDTO.builder().message("Saved person with ID: " + id).build();
     }
