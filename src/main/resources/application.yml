@@ -1,9 +1,0 @@
-spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: jdbc:postgresql://aws-postgres.cle5plnttcmz.sa-east-1.rds.amazonaws.com/bootcamp
-    username: programador
-    password: 3CXxRNf5AXX3eVkQxvDg

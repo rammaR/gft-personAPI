@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name = "Person_Type")
 @Data
 @Builder
 @AllArgsConstructor
@@ -19,6 +20,7 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, nullable = false)
     private Long id;
 
     @Column(nullable = false)
