@@ -116,7 +116,7 @@ public class BeerServiceTest {
     }
 
     @Test
-    void testToReturnAEmptyListOfBeers(){
+    void testToReturnAEmptyListOfBeers() {
         when(beerRepository.findAll()).thenReturn(Collections.EMPTY_LIST);
         //
         List<BeerDTO> foundedListOfBeers = beerService.listAll();
@@ -146,6 +146,18 @@ public class BeerServiceTest {
         Assert.assertThrows(BeerNotFoundException.class, () -> {
             beerService.delete(invalidID);
         });
+    }
+
+    @Test
+    void testIncrementOfASpecificBeerShouldReturnSucess() {
+        BeerDTO beerDTO = createFakeBeerDTO();
+        Beer beer = createFakeBeer();
+        Integer newQuantity = 5;
+
+        BeerDTO incrementedBeerDTO = beerService.increment(beerDTO.getId(), newQuantity);
+
+        assertThat(incrementedBeerDTO.getQuantity(), is(beerDTO.getQuantity() + newQuantity));
+        assertThat(incrementedBeerDTO.getQuantity(), lessThan(beerDTO.getMax()));
     }
 
 }

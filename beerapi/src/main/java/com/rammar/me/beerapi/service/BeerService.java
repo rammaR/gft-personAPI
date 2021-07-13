@@ -65,4 +65,13 @@ public class BeerService {
             throw new BeerDuplicateException("There is already a beer with the same brand " + brand);
         }
     }
+
+    public BeerDTO increment(Long id, Integer newQuantity) {
+        Optional<Beer> optionalBeer = beerRepository.findById(id);
+        if (optionalBeer.isPresent()) {
+            Beer beer = optionalBeer.get();
+            beer.setQuantity(beer.getQuantity() + newQuantity);
+            return beerMapper.toDTO(beer);
+        }
+    }
 }
