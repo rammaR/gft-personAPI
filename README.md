@@ -1,8 +1,10 @@
-# Person API Project
+# JAVA API Project
 
 # Descripiton 
-    Project made in 2021 to the GFT bootcamp hosted by DIO (digitalinnovation.one). Demonstrates an simple application of cadastre of person through API REST.
-    Application hosted at Heroku: https://gft-person-api.herokuapp.com
+    Project made in 2021 to the GFT bootcamp hosted by DIO (digitalinnovation.one). 
+    Demonstrates an simple application of cadastre of person through API REST.
+    Also incremented to demonstrate an API of cadastre of beers.
+    Application hosted at Heroku: https://gft-person-api.herokuapp.com.
 
 # Used Technology
     - Start setup made with Spring Initalzr
@@ -17,7 +19,8 @@
 # How To Use
     - Install the dependencies by Mavem
     - Execute
-    - Run requisition to /person to start
+    - Run requisition to /person to start personAPI
+    - Run requisition to /beer to start beerAPI
     - View documentation at /swagger-ui.html
     
 # Learn
