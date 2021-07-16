@@ -4,6 +4,7 @@ import com.rammar.me.beerapi.dto.BeerDTO;
 import com.rammar.me.beerapi.entity.Beer;
 import com.rammar.me.beerapi.exceptions.BeerDuplicateException;
 import com.rammar.me.beerapi.exceptions.BeerNotFoundException;
+import com.rammar.me.beerapi.exceptions.BeerOverflowStockException;
 import com.rammar.me.beerapi.mapper.BeerMapper;
 import com.rammar.me.beerapi.repository.BeerRepository;
 import lombok.AllArgsConstructor;
@@ -66,12 +67,14 @@ public class BeerService {
         }
     }
 
-    public BeerDTO increment(Long id, Integer newQuantity) {
-        Optional<Beer> optionalBeer = beerRepository.findById(id);
-        if (optionalBeer.isPresent()) {
-            Beer beer = optionalBeer.get();
-            beer.setQuantity(beer.getQuantity() + newQuantity);
-            return beerMapper.toDTO(beer);
+    public BeerDTO increment(Long id, Integer increment) throws BeerNotFoundException, BeerOverflowStockException {
+        Beer foundedBeer = verifyExistsById(id);
+
+        if (foundedBeer.getQuantity() + increment < foundedBeer.getMax()) {
+            foundedBeer.setQuantity(foundedBeer.getQuantity() + increment);
+            return beerMapper.toDTO(foundedBeer);
+        } else {
+            throw new BeerOverflowStockException(id, foundedBeer.getMax());
         }
     }
 }

@@ -6,6 +6,7 @@ import com.rammar.me.beerapi.dto.BeerDTO;
 import com.rammar.me.beerapi.entity.Beer;
 import com.rammar.me.beerapi.exceptions.BeerDuplicateException;
 import com.rammar.me.beerapi.exceptions.BeerNotFoundException;
+import com.rammar.me.beerapi.exceptions.BeerOverflowStockException;
 import com.rammar.me.beerapi.mapper.BeerMapper;
 import com.rammar.me.beerapi.repository.BeerRepository;
 import com.rammar.me.beerapi.service.BeerService;
@@ -29,6 +30,7 @@ import static com.rammar.me.beerapi.utils.MyStrings.STR_CREATED_BEER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -149,15 +151,28 @@ public class BeerServiceTest {
     }
 
     @Test
-    void testIncrementOfASpecificBeerShouldReturnSucess() {
+    void testIncrementOfASpecificBeerShouldReturnSucess() throws BeerNotFoundException, BeerOverflowStockException {
         BeerDTO beerDTO = createFakeBeerDTO();
         Beer beer = createFakeBeer();
         Integer newQuantity = 5;
-
+        when(beerRepository.findById(beer.getId())).thenReturn(Optional.ofNullable(beer));
+        //
         BeerDTO incrementedBeerDTO = beerService.increment(beerDTO.getId(), newQuantity);
-
+        //
         assertThat(incrementedBeerDTO.getQuantity(), is(beerDTO.getQuantity() + newQuantity));
         assertThat(incrementedBeerDTO.getQuantity(), lessThan(beerDTO.getMax()));
+    }
+
+    @Test
+    void testIfIncrementIsGreaterThanMaxThenThrowAException() throws BeerNotFoundException {
+        BeerDTO beerDTO = createFakeBeerDTO();
+        Beer beer = createFakeBeer();
+        Integer newQuantity = 9999;
+        when(beerRepository.findById(beer.getId())).thenReturn(Optional.ofNullable(beer));
+        //
+        assertThrows(BeerOverflowStockException.class, () -> {
+            BeerDTO incrementedBeerDTO = beerService.increment(beerDTO.getId(), newQuantity);
+        });
     }
 
 }
