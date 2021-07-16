@@ -13,12 +13,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.rammar.me.personapi.mapper.PersonMapper.personMapper;
+
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
     private PersonRepository personRepository;
-    private PersonMapper personMapper;
+    //private PersonMapper personMapper;
 
     public MessageDTO savePerson(PersonDTO personDTO) {
         Person person = personMapper.toModel(personDTO);

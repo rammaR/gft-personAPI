@@ -49,8 +49,8 @@ public class BeerServiceTest {
         BeerDTO fakeBeerDTO = BeerUtils.createFakeBeerDTO();
         Beer fakeBeer = BeerUtils.createFakeBeer();
         when(beerRepository.findByName(fakeBeerDTO.getName())).thenReturn(Optional.empty());
-        when(beerMapper.toModel(fakeBeerDTO)).thenReturn(fakeBeer);
-        when(beerMapper.toDTO(fakeBeer)).thenReturn(fakeBeerDTO);
+        //when(beerMapper.toModel(fakeBeerDTO)).thenReturn(fakeBeer);
+        //when(beerMapper.toDTO(fakeBeer)).thenReturn(fakeBeerDTO);
         when(beerRepository.save(fakeBeer)).thenReturn(fakeBeer);
         //
         BeerDTO savedBeer = beerService.create(fakeBeerDTO);

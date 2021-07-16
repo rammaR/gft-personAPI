@@ -9,6 +9,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @SpringBootApplication
+@ComponentScan({"com.rammar.me.personapi"})
 public class PersonapiApplication {
 
     public static void main(String[] args) {

@@ -5,10 +5,10 @@ import com.rammar.me.personapi.entity.Student;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface StudentMapper {
 
-    PersonMapper personMapper = Mappers.getMapper( PersonMapper.class );
+    StudentMapper studentMapper = Mappers.getMapper( StudentMapper.class );
 
     Student toModel(StudentDTO dto);
 

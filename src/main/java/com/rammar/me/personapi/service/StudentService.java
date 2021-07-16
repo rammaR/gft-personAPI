@@ -15,12 +15,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.rammar.me.personapi.mapper.StudentMapper.studentMapper;
+
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class StudentService {
 
     private StudentRepository studentRepository;
-    private StudentMapper studentMapper;
+    //private StudentMapper studentMapper;
 
     public MessageDTO saveStudent(StudentDTO studentDTO) {
         Person person = studentMapper.toModel(studentDTO);
