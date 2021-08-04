@@ -5,7 +5,6 @@ import com.rammar.me.personapi.entity.Student;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
 public interface StudentMapper {
 
     StudentMapper studentMapper = Mappers.getMapper( StudentMapper.class );

@@ -1,9 +1,6 @@
 package com.rammar.me.personapi.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.validation.Valid;
@@ -14,6 +11,7 @@ import java.util.List;
 @Data
 @SuperBuilder
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 public class StudentDTO extends PersonDTO {
 

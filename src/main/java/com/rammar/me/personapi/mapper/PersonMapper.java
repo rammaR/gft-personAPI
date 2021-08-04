@@ -5,11 +5,9 @@ import com.rammar.me.personapi.entity.Person;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import org.springframework.context.annotation.Bean;
 
 @Mapper
 public interface PersonMapper {
-
     PersonMapper personMapper = Mappers.getMapper(PersonMapper.class);
 
     @Mapping(target = "birthdate", source = "birthdate", dateFormat = "dd-MM-yyyy")
@@ -17,5 +15,4 @@ public interface PersonMapper {
 
     @Mapping(target = "birthdate", source = "birthdate", dateFormat = "dd-MM-yyyy")
     PersonDTO toDTO(Person dto);
-
 }

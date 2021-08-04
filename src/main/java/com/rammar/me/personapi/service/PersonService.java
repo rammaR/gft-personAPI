@@ -20,7 +20,7 @@ import static com.rammar.me.personapi.mapper.PersonMapper.personMapper;
 public class PersonService {
 
     private PersonRepository personRepository;
-    //private PersonMapper personMapper;
+    //private PersonMapper personMapper = PersonMapper.personMapper;
 
     public MessageDTO savePerson(PersonDTO personDTO) {
         Person person = personMapper.toModel(personDTO);
