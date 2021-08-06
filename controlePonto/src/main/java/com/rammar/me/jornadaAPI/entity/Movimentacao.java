@@ -1,4 +1,4 @@
-package com.rammar.me.controlePonto.entity;
+package com.rammar.me.jornadaAPI.entity;
 
 import lombok.*;
 

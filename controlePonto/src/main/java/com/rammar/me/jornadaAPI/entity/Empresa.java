@@ -1,12 +1,10 @@
-package com.rammar.me.controlePonto.entity;
+package com.rammar.me.jornadaAPI.entity;
 
-import com.rammar.me.personapi.entity.Address;
 import lombok.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 @Data
@@ -14,6 +12,7 @@ import javax.persistence.OneToOne;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
+@Audited
 public class Empresa {
 
     @Id

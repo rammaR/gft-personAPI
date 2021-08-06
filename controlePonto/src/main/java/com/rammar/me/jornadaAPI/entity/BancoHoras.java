@@ -1,11 +1,10 @@
-package com.rammar.me.controlePonto.entity;
+package com.rammar.me.jornadaAPI.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data

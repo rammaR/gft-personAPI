@@ -1,11 +1,10 @@
-package com.rammar.me.controlePonto.entity;
+package com.rammar.me.jornadaAPI.entity;
 
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 @Data
@@ -13,10 +12,10 @@ import javax.persistence.OneToMany;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class Localidade {
+@Audited
+public class JornadaTrabalho {
     @Id
     private Long id;
     private String descricao;
-    @ManyToOne
-    private NivelAcesso nivelAcesso;
+
 }

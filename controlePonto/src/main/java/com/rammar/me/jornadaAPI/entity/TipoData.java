@@ -1,4 +1,4 @@
-package com.rammar.me.controlePonto.entity;
+package com.rammar.me.jornadaAPI.entity;
 
 import lombok.*;
 
@@ -11,9 +11,8 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class JornadaTrabalho {
+public class TipoData {
     @Id
-    private Long id;
+    private long id;
     private String descricao;
-
 }

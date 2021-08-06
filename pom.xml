@@ -6,6 +6,7 @@
     <modules>
         <module>beerapi</module>
         <module>controlePonto</module>
+        <module>controlePontoAPI</module>
     </modules>
 
     <parent>

@@ -1,4 +1,4 @@
-package com.rammar.me.controlePonto.entity;
+package com.rammar.me.jornadaAPI.entity;
 
 import lombok.*;
 
@@ -14,9 +14,11 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Builder
 public class Calendario {
+
     @Id
     private Long id;
     private String descricao;
+
     @ManyToOne
     private TipoData tipoData;
     private LocalDateTime dataEspecial;

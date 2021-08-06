@@ -1,6 +1,7 @@
-package com.rammar.me.controlePonto.entity;
+package com.rammar.me.jornadaAPI.entity;
 
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,10 +12,9 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class Ocorrencia {
+@Audited
+public class CategoriaUsuario {
     @Id
-    private long id;
-    private String nome;
+    private Long id;
     private String descricao;
-
 }

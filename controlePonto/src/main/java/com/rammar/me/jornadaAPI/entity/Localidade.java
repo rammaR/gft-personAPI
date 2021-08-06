@@ -1,9 +1,10 @@
-package com.rammar.me.controlePonto.entity;
+package com.rammar.me.jornadaAPI.entity;
 
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Data
@@ -11,8 +12,10 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class TipoData {
+public class Localidade {
     @Id
-    private long id;
+    private Long id;
     private String descricao;
+    @ManyToOne
+    private NivelAcesso nivelAcesso;
 }

@@ -20,7 +20,7 @@ import java.util.List;
 
 @Api(value = "Person")
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/v1/person")
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
 
